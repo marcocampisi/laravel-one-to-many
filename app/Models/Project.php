@@ -11,6 +11,11 @@ class Project extends Model
 
     protected $fillable = ['title', 'description', 'date'];
 
+    protected $rules = [
+        'name' => 'required|string|max:255',
+        'type_id' => 'nullable|exists:types,id'
+    ];
+
     public function type()
     {
         return $this->belongsTo(Type::class);

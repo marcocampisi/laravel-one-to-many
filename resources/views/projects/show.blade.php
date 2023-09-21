@@ -12,6 +12,9 @@
             <div class="p-4">
                 <h2 class="text-xl font-semibold mb-2">{{ $project->title }}</h2>
                 <p class="text-gray-600">{{ $project->description }}</p>
+                @if ($project->type)
+                    <p class="text-gray-600">Tipologia: {{ $project->type->name }}</p>
+                @endif
             </div>
             <div class="bg-gray-100 p-4 border-t border-gray-200">
                 <a href="{{ route('projects.edit', ['project' => $project]) }}" class="text-blue-500 hover:underline">Modifica</a>
