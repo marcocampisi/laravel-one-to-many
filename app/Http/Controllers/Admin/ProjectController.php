@@ -57,7 +57,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $types = Type::all();
+
+        return view('projects.show', compact('project', 'types'));
     }
 
     /**
@@ -65,7 +67,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -76,13 +80,15 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'type_id' => 'nullable|exists:types,id'
         ]);
     
         $project->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'date' => $request->input('date')
+            'date' => $request->input('date'),
+            'type_id' => $request->input('type_id')
         ]);
     
         return redirect()->route('projects.show', ['project' => $project])

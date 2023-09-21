@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'date'];
+    protected $fillable = ['title', 'description', 'date', 'name', 'type_id'];
 
     protected $rules = [
         'name' => 'required|string|max:255',
