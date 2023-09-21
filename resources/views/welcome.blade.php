@@ -45,6 +45,7 @@
                                     <h2 class="text-xl font-semibold mb-2">{{ $project->title }}</h2>
                                     <p class="text-gray-600">{{ $project->description }}</p>
                                     <p class="text-gray-600">{{ $project->date }}</p>
+                                    <p class="text-gray-600"><strong>Tipologia: </strong>{{ $project->type->name }}</p>
                                 </div>
                             </li>
                         @endforeach
